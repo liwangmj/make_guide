@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "module_a/module_a.h"
+#include "module_a.h"
 
 int module_a_test()
 {
