@@ -1,6 +1,6 @@
 CVER      ?= debug
 CCPU      ?= 64
-CPLATFORM ?= i386
+CPLATFORM ?= linux
 
 ifeq ($(CVER), debug)
 else
@@ -14,9 +14,9 @@ else
 CCPU := 64
 endif
 
-ifeq ($(CPLATFORM), i386)
-export MAKEINCLUDE_i386=${PROJECTPATH}/make/i386.mak
-include ${MAKEINCLUDE_i386}
+ifeq ($(CPLATFORM), linux)
+export MAKEINCLUDE_linux=${PROJECTPATH}/make/linux.mak
+include ${MAKEINCLUDE_linux}
 endif
 
 all: subdirs

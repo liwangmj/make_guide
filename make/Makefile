@@ -6,3 +6,4 @@ SUBDIRS = src/example_lib \
           src/example_app
 
 include ${MAKEINCLUDE}
+

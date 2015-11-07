@@ -12,5 +12,5 @@ all: subdirs ${OBJECTS}
 
 clean: cleansubdirs
 	${RM} ${TARGET} ${OBJECTS}
-	
+
 include ${MAKEINCLUDE}

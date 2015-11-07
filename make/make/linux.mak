@@ -15,8 +15,8 @@ LD  := ld
 RM  := rm -f
 
 ARFLAGS  := rcs
-CFLAGS   := -O2 -Wall -fPIC
-CXXFLAGS := -O2 -Wall -fPIC
+CFLAGS   := -O2 -Wall -fPIC -D__LINUX
+CXXFLAGS := -O2 -Wall -fPIC -D__LINUX
 LDFLAGS  := -lm -Wl,-rpath=.
 
 FINDSUB  := $$(find ./${SUBDIRS} -name '*.o')
@@ -29,12 +29,14 @@ ifeq ($(CVER), debug)
 OUTSUFFIX := ${CPLATFORM}_${CCPU}_d
 CFLAGS    += -g -D__DEBUG
 CXXFLAGS  += -g -D__DEBUG
-LDFLAGS   += ${LIBOUTPATH}/libexample_lib_i386_64_d.a \
-             -L${DLLOUTPATH} -lexample_dll_i386_64_d
+LDFLAGS   += ${LIBOUTPATH}/libexample_lib_linux_64_d.a
+LDFLAGS   += -L${DLLOUTPATH} \
+             -lexample_dll_linux_64_d
 
 else
 OUTSUFFIX := ${CPLATFORM}_${CCPU}
-LDFLAGS   += ${LIBOUTPATH}/libexample_lib_i386_64.a \
-             -L${DLLOUTPATH} -lexample_dll_i386_64
+LDFLAGS   += ${LIBOUTPATH}/libexample_lib_linux_64.a
+LDFLAGS   += -L${DLLOUTPATH} \
+             -lexample_dll_linux_64
 
 endif
