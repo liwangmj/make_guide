@@ -33,9 +33,9 @@ help:
 	@echo "Params:"
 	@echo "  CVER           ""=debug或则=release"
 	@echo "  CCPU           ""=32或=64或其他"
-	@echo "  CPLATFORM      ""=i386或其他make平台配置文件"
+	@echo "  CPLATFORM      ""=linux或其他make平台配置文件"
 	@echo "Example:"
-	@echo "  make CVER=debug CCPU=64 CPLATFORM=i386 all"
+	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux all"
 
 .PHONY: subdirs ${SUBDIRS} cleansubdirs
 subdirs: ${SUBDIRS}
