@@ -1,6 +1,6 @@
-TARGET  = ${DLLOUTPATH}/libexample_dll_${OUTSUFFIX}.so
-LIBRARY = ${DLLOUTPATH}/libexample_dll_${OUTSUFFIX}.so.1.0.0
-SONAME  = ${DLLOUTPATH}/libexample_dll_${OUTSUFFIX}.so.1
+TARGET = ${DLLOUTPATH}/libexample_dll_${DLLOUTSUFFIX}
+LIBRARY = ${DLLOUTPATH}/libexample_dll_${DLLOUTSUFFIX}.1.0.0
+SONAME = ${DLLOUTPATH}/libexample_dll_${DLLOUTSUFFIX}.1
 SUBDIRS =
 OBJECTS = example_dll.o
 

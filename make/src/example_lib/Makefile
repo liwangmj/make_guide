@@ -1,4 +1,4 @@
-TARGET  = ${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}.a
+TARGET = ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
 SUBDIRS =
 OBJECTS = example_lib.o
 

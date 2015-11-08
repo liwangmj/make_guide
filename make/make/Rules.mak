@@ -1,23 +1,26 @@
-CVER      ?= debug
-CCPU      ?= 64
+CVER ?= debug
+CCPU ?= 64
 CPLATFORM ?= linux
 
 ifeq ($(CVER), debug)
 else
-CVER := release
+    CVER := release
 endif
 
 ifeq ($(CCPU), 8)
 else ifeq ($(CCPU), 16)
 else ifeq ($(CCPU), 32)
 else
-CCPU := 64
+    CCPU := 64
 endif
 
 ifeq ($(CPLATFORM), linux)
-export MAKEINCLUDE_linux=${PROJECTPATH}/make/linux.mak
-include ${MAKEINCLUDE_linux}
+    export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/linux.mak
+else
+    export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/linux.mak
 endif
+
+include ${MAKEINCLUDE_PLATFORM}
 
 all: subdirs
 

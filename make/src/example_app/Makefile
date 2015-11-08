@@ -1,4 +1,4 @@
-TARGET  = ${APPOUTPATH}/example_app
+TARGET = ${APPOUTPATH}/example_app
 SUBDIRS = module_a module_b
 OBJECTS = main.o
 
