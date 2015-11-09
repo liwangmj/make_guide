@@ -48,7 +48,7 @@ help:
 	@echo "  CPLATFORM      ""=linux或其他平台"
 	@echo "  CCOMPILER      ""=g++或其他平台"
 	@echo "Example:"
-	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g+= all"
+	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++ all"
 
 .PHONY: subdirs ${SUBDIRS} cleansubdirs
 subdirs: ${SUBDIRS}
