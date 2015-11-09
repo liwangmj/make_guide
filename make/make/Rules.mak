@@ -1,6 +1,7 @@
 CVER ?= debug
 CCPU ?= 64
 CPLATFORM ?= linux
+CCOMPILER ?= g++
 
 ifeq ($(CVER), debug)
 else
@@ -14,12 +15,20 @@ else
     CCPU := 64
 endif
 
-ifeq ($(CPLATFORM), linux)
-    export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/linux.mak
-else
-    export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/linux.mak
-endif
+APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
+DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
+LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
+$(shell mkdir -p ${APPOUTPATH})
+$(shell mkdir -p ${DLLOUTPATH})
+$(shell mkdir -p ${LIBOUTPATH})
 
+INCLUDES := -I${PROJECTPATH}/include/example_app \
+            -I${PROJECTPATH}/include/example_dll \
+            -I${PROJECTPATH}/include/example_lib
+
+FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
+
+export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/${CPLATFORM}_${CCOMPILER}.mak
 include ${MAKEINCLUDE_PLATFORM}
 
 all: subdirs
@@ -36,9 +45,10 @@ help:
 	@echo "Params:"
 	@echo "  CVER           ""=debug或则=release"
 	@echo "  CCPU           ""=32或=64或其他"
-	@echo "  CPLATFORM      ""=linux或其他make平台配置文件"
+	@echo "  CPLATFORM      ""=linux或其他平台"
+	@echo "  CCOMPILER      ""=g++或其他平台"
 	@echo "Example:"
-	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux all"
+	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g+= all"
 
 .PHONY: subdirs ${SUBDIRS} cleansubdirs
 subdirs: ${SUBDIRS}
