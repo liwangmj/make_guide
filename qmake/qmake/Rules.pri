@@ -1,8 +1,5 @@
 PROJECTPATH = E:/SourceCode/qmake
 
-INCLUDEPATH += $${PROJECTPATH}/include/example_lib \
-               $${PROJECTPATH}/include/example_dll
-
 CONFIG(debug, debug|release) {
     CVER = debug
 } else {
@@ -14,6 +11,9 @@ contains(QMAKE_TARGET.arch, x86_64) {
 } else {
     CCPU = 32
 }
+
+INCLUDEPATH += $${PROJECTPATH}/include/example_lib \
+               $${PROJECTPATH}/include/example_dll
 
 win32-msvc2010 {
     CPLATFORM = win32
@@ -33,6 +33,24 @@ win32-g++ {
     include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
+macx-g++ {
+    CPLATFORM = macx
+    CCOMPILE = g++
+    APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+}
+
+macx-llvm {
+    CPLATFORM = macx
+    CCOMPILE = llvm
+    APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
+    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+}
+
 linux-g++ {
     CPLATFORM = linux
     CCOMPILE = g++
@@ -42,6 +60,3 @@ linux-g++ {
     include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
-macx {
-# mac only
-}
