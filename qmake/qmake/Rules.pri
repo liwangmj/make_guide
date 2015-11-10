@@ -9,7 +9,11 @@ CONFIG(debug, debug|release) {
 contains(QMAKE_TARGET.arch, x86_64) {
     CCPU = 64
 } else {
-    CCPU = 32
+    contains(QMAKE_TARGET.arch, x86) {
+        CCPU = 32
+    } else {
+        CCPU = 32
+    }
 }
 
 INCLUDEPATH += $${PROJECTPATH}/include/example_lib \
