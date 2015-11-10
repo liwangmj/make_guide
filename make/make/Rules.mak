@@ -1,4 +1,4 @@
-CVER ?= debug
+CVER ?= release
 CCPU ?= 64
 CPLATFORM ?= linux
 CCOMPILER ?= g++
@@ -39,7 +39,7 @@ clean: cleansubdirs
 .PHONY: help
 help:
 	@echo "Help:"
-	@echo "  make           ""默认执行make all"
+	@echo "  make           ""默认执行make CVER=release all"
 	@echo "  make clean     ""清理编译目录"
 	@echo "  make help      ""显示帮助列表"
 	@echo "Params:"
