@@ -1,7 +1,7 @@
 include ($${PWD}/../../qmake/Rules.pri)
 
-include ($${PWD}/module_a/module_a.pri)
-include ($${PWD}/module_b/module_b.pri)
+include ($${PWD}/module_a/module_a.pro)
+include ($${PWD}/module_b/module_b.pro)
 
 LIBS += $${LIBSLIST}
 
