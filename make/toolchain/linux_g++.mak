@@ -20,15 +20,15 @@ ifeq ($(CVER), debug)
     CXXFLAGS += -g -D__DEBUG
     
     ifeq ($(CCPU), 64)
-        CFLAGS += -m64 -D__LINUX_G++_64
-        CXXFLAGS += -m64 -D__LINUX_G++_64
+        CFLAGS += -m64 -D__LINUX_GXX_64
+        CXXFLAGS += -m64 -D__LINUX_GXX_64
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
 
     else ifeq ($(CCPU), 32)
-        CFLAGS += -m32 -D__LINUX_G++_32
-        CXXFLAGS += -m32 -D__LINUX_G++_32
+        CFLAGS += -m32 -D__LINUX_GXX_32
+        CXXFLAGS += -m32 -D__LINUX_GXX_32
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
@@ -40,15 +40,15 @@ else
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.so
     
     ifeq ($(CCPU), 64)
-        CFLAGS += -m64 -D__LINUX_G++_64
-        CXXFLAGS += -m64 -D__LINUX_G++_64
+        CFLAGS += -m64 D__LINUX_GXX_64
+        CXXFLAGS += -m64 -D__LINUX_GXX_64
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
 
     else ifeq ($(CCPU), 32)
-        CFLAGS += -m32 -D__LINUX_G++_32
-        CXXFLAGS += -m32 -D__LINUX_G++_32
+        CFLAGS += -m32 -D__LINUX_GXX_32
+        CXXFLAGS += -m32 -D__LINUX_GXX_32
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}

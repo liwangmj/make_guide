@@ -1,5 +1,7 @@
 include ($${PWD}/../../toolchain/Rules.pri)
 
+INCLUDEPATH += $${INLCUDELIST}
+
 QT -= gui
 TEMPLATE = lib
 DEFINES += QT_DLL_LIBRARY

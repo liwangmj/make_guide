@@ -16,7 +16,7 @@ contains(QMAKE_TARGET.arch, x86_64) {
     }
 }
 
-INCLUDEPATH += $${PROJECTPATH}/include/example_lib \
+INLCUDELIST += $${PROJECTPATH}/include/example_lib \
                $${PROJECTPATH}/include/example_dll
 
 win32-msvc2010 {
@@ -25,7 +25,7 @@ win32-msvc2010 {
     APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+    include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
 win32-g++ {
@@ -34,7 +34,7 @@ win32-g++ {
     APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+    include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
 macx-g++ {
@@ -43,7 +43,7 @@ macx-g++ {
     APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+    include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
 macx-llvm {
@@ -52,7 +52,7 @@ macx-llvm {
     APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+    include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 
 linux-g++ {
@@ -61,6 +61,6 @@ linux-g++ {
     APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
     LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-    include ($${PROJECTPATH}/qmake/$${CPLATFORM}_$${CCOMPILE}.pri)
+    include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
 }
 

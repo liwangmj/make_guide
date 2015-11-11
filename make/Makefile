@@ -1,5 +1,5 @@
 export PROJECTPATH=${PWD}
-export MAKEINCLUDE=${PROJECTPATH}/make/Rules.mak
+export MAKEINCLUDE=${PROJECTPATH}/toolchain/Rules.mak
 
 SUBDIRS = src/example_lib \
           src/example_dll \

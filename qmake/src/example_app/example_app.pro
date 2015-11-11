@@ -3,6 +3,7 @@ include ($${PWD}/../../toolchain/Rules.pri)
 include ($${PWD}/module_a/module_a.pro)
 include ($${PWD}/module_b/module_b.pro)
 
+INCLUDEPATH += $${INLCUDELIST}
 LIBS += $${LIBSLIST}
 
 QT += core gui

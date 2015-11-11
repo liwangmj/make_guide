@@ -28,7 +28,7 @@ INCLUDES := -I${PROJECTPATH}/include/example_app \
 
 FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
 
-export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/make/${CPLATFORM}_${CCOMPILER}.mak
+export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILER}.mak
 include ${MAKEINCLUDE_PLATFORM}
 
 all: subdirs
