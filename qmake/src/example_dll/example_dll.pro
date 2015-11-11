@@ -1,4 +1,4 @@
-include ($${PWD}/../../qmake/Rules.pri)
+include ($${PWD}/../../toolchain/Rules.pri)
 
 QT -= gui
 TEMPLATE = lib
