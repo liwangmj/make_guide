@@ -6,10 +6,7 @@ CXX := g++
 AR := ar
 LD := ld
 RM := rm -f
-
 ARFLAGS := rcs
-CFLAGS := -O2 -Wall -fPIC -D__LINUX
-CXXFLAGS := -O2 -Wall -fPIC -D__LINUX
 LDFLAGS := -lm -Wl,-rpath=.
 
 ifeq ($(CVER), debug)
@@ -38,6 +35,8 @@ else
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.so
+    CFLAGS += -O3 -Wall -fPIC
+    CXXFLAGS += -O3 -Wall -fPIC
     
     ifeq ($(CCPU), 64)
         CFLAGS += -m64 D__LINUX_GXX_64
