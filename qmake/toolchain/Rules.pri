@@ -1,4 +1,5 @@
-PROJECTPATH = E:/SourceCode/eclipse/qmake
+#PROJECTPATH = E:/SourceCode/eclipse/qmake
+PROJECTPATH = E:/SourceCode/make_guide/qmake
 
 CONFIG(debug, debug|release) {
     CVER = debug
@@ -16,9 +17,9 @@ contains(QMAKE_TARGET.arch, x86_64) {
     }
 }
 
-win32-msvc2010 {
+win32-msvc2010 | win32-msvc2012 {
     CPLATFORM = win32
-    CCOMPILE = vc10
+    CCOMPILE = msvc
 }
 win32-g++ {
     CPLATFORM = win32
