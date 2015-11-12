@@ -6,6 +6,6 @@ all: ${SUBDIRS} ${OBJECTS}
 	${AR} ${ARFLAGS} ${TARGET} ${OBJECTS}
 
 clean: cleansubdirs
-	${RM} ${TARGET} ${OBJECTS}
+	-(${RM} ${TARGET} ${OBJECTS})
 
 include ${MAKEINCLUDE}

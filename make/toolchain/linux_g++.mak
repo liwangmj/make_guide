@@ -13,8 +13,8 @@ ifeq ($(CVER), debug)
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.so
-    CFLAGS += -g -D__DEBUG
-    CXXFLAGS += -g -D__DEBUG
+    CFLAGS += -g -D__DEBUG -fPIC
+    CXXFLAGS += -g -D__DEBUG -fPIC
     
     ifeq ($(CCPU), 64)
         CFLAGS += -m64 -D__LINUX_GXX_64

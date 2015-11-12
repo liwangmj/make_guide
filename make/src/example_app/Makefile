@@ -6,6 +6,6 @@ all: subdirs ${OBJECTS}
 	${CXX} -o ${TARGET} ${OBJECTS} ${FINDSUB} ${LDFLAGS} ${INCLUDES}
 
 clean: cleansubdirs
-	${RM} ${TARGET} ${OBJECTS}
+	-(${RM} ${TARGET} ${OBJECTS})
 
 include ${MAKEINCLUDE}

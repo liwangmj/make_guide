@@ -32,13 +32,15 @@ FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
 export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILER}.mak
 include ${MAKEINCLUDE_PLATFORM}
 
+export LD_LIBRARY_PATH=${APPOUTPATH}
+
 all: subdirs
 
 .PHONY: install
 install:
-	mkdir -p ${CDESTDIR}/bin
-	mkdir -p ${CDESTDIR}/lib
-	mkdir -p ${CDESTDIR}/include
+	@(mkdir -p ${CDESTDIR}/bin)
+	@(mkdir -p ${CDESTDIR}/lib)
+	@(mkdir -p ${CDESTDIR}/include)
 	cp -rf ${APPOUTPATH}/* ${CDESTDIR}/bin
 	cp -rf ${DLLOUTPATH}/* ${CDESTDIR}/lib
 	cp -rf ${LIBOUTPATH}/* ${CDESTDIR}/lib
@@ -46,6 +48,10 @@ install:
 	chmod 755 -R ${CDESTDIR}/bin
 	chmod 755 -R ${CDESTDIR}/lib
 	chmod 755 -R ${CDESTDIR}/include
+
+.PHONY: test
+test:
+	@(${APPOUTPATH}/${RUNTESTNAME})
 
 .PHONY: clean
 clean: cleansubdirs
@@ -55,6 +61,7 @@ help:
 	@echo "--------------------------------------------------------------"
 	@echo "Help:"
 	@echo "  make           ""默认执行make CVER=release all"
+	@echo "  make test      ""执行test程序进行测试"
 	@echo "  make install   ""安装到指定目录，默认为/usr/local"
 	@echo "  make clean     ""清理编译目录"
 	@echo "  make help      ""显示帮助列表"
@@ -68,6 +75,7 @@ help:
 	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++ all"
 	@echo "  make CDESTDIR=/usr/local install"
 	@echo "  make CVER=debug clean"
+	@echo "  make CVER=debug test"
 	@echo "--------------------------------------------------------------"
 
 .PHONY: subdirs ${SUBDIRS} cleansubdirs
