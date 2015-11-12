@@ -79,3 +79,13 @@ install(DIRECTORY ${LIBOUTPATH}/ DESTINATION lib
                                              WORLD_EXECUTE
                                              WORLD_READ
 )
+install(DIRECTORY ${PROJECTPATH}/include/ DESTINATION include
+                                 PATTERN "*"
+                                 PERMISSIONS OWNER_EXECUTE
+                                             OWNER_WRITE
+                                             OWNER_READ
+                                             GROUP_EXECUTE
+                                             GROUP_READ
+                                             WORLD_EXECUTE
+                                             WORLD_READ
+)

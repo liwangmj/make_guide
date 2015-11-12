@@ -7,7 +7,7 @@ AR := ar
 LD := ld
 RM := rm -f
 ARFLAGS := rcs
-LDFLAGS := -lm -Wl,-rpath=.
+LDFLAGS := -lm -Wl,--rpath=./
 
 ifeq ($(CVER), debug)
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
