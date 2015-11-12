@@ -36,16 +36,16 @@ all: subdirs
 
 .PHONY: install
 install:
-	mkdir -p ${CDESTDIR}/${PROJECTNAME}/bin
-	mkdir -p ${CDESTDIR}/${PROJECTNAME}/lib
-	mkdir -p ${CDESTDIR}/${PROJECTNAME}/include
-	cp -rf ${APPOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/bin
-	cp -rf ${DLLOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
-	cp -rf ${LIBOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
-	cp -rf ${PROJECTPATH}/include/* ${CDESTDIR}/${PROJECTNAME}/include
-	chmod 755 -R ${CDESTDIR}/${PROJECTNAME}/bin
-	chmod 755 -R ${DLLOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
-	chmod 755 -R ${PROJECTPATH}/include/* ${CDESTDIR}/${PROJECTNAME}/include
+	mkdir -p ${CDESTDIR}/bin
+	mkdir -p ${CDESTDIR}/lib
+	mkdir -p ${CDESTDIR}/include
+	cp -rf ${APPOUTPATH}/* ${CDESTDIR}/bin
+	cp -rf ${DLLOUTPATH}/* ${CDESTDIR}/lib
+	cp -rf ${LIBOUTPATH}/* ${CDESTDIR}/lib
+	cp -rf ${PROJECTPATH}/include/* ${CDESTDIR}/include
+	chmod 755 -R ${CDESTDIR}/bin
+	chmod 755 -R ${CDESTDIR}/lib
+	chmod 755 -R ${CDESTDIR}/include
 
 .PHONY: clean
 clean: cleansubdirs

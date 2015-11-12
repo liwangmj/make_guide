@@ -49,7 +49,7 @@ set(INCLUDELIST "${INCLUDELIST}"
 
 include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILE}.cmake)
 
-install(DIRECTORY ${APPOUTPATH}/ DESTINATION ${PROJECTNAME}/bin 
+install(DIRECTORY ${APPOUTPATH}/ DESTINATION bin
                                  PATTERN "*"
                                  PERMISSIONS OWNER_EXECUTE
                                              OWNER_WRITE
@@ -59,7 +59,7 @@ install(DIRECTORY ${APPOUTPATH}/ DESTINATION ${PROJECTNAME}/bin
                                              WORLD_EXECUTE
                                              WORLD_READ
 )
-install(DIRECTORY ${DLLOUTPATH}/ DESTINATION ${PROJECTNAME}/lib 
+install(DIRECTORY ${DLLOUTPATH}/ DESTINATION lib
                                  PATTERN "*"
                                  PERMISSIONS OWNER_EXECUTE
                                              OWNER_WRITE
@@ -69,7 +69,7 @@ install(DIRECTORY ${DLLOUTPATH}/ DESTINATION ${PROJECTNAME}/lib
                                              WORLD_EXECUTE
                                              WORLD_READ
 )
-install(DIRECTORY ${LIBOUTPATH}/ DESTINATION ${PROJECTNAME}/lib 
+install(DIRECTORY ${LIBOUTPATH}/ DESTINATION lib
                                  PATTERN "*"
                                  PERMISSIONS OWNER_EXECUTE
                                              OWNER_WRITE
