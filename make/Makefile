@@ -1,3 +1,4 @@
+export PROJECTNAME=$(shell pwd |sed 's/^\(.*\)[/]//')
 export PROJECTPATH=${PWD}
 export MAKEINCLUDE=${PROJECTPATH}/toolchain/Rules.mak
 
