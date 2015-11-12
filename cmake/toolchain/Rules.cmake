@@ -49,3 +49,33 @@ set(INCLUDELIST "${INCLUDELIST}"
 
 include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILE}.cmake)
 
+install(DIRECTORY ${APPOUTPATH}/ DESTINATION ${PROJECTNAME}/bin 
+                                 PATTERN "*"
+                                 PERMISSIONS OWNER_EXECUTE
+                                             OWNER_WRITE
+                                             OWNER_READ
+                                             GROUP_EXECUTE
+                                             GROUP_READ
+                                             WORLD_EXECUTE
+                                             WORLD_READ
+)
+install(DIRECTORY ${DLLOUTPATH}/ DESTINATION ${PROJECTNAME}/lib 
+                                 PATTERN "*"
+                                 PERMISSIONS OWNER_EXECUTE
+                                             OWNER_WRITE
+                                             OWNER_READ
+                                             GROUP_EXECUTE
+                                             GROUP_READ
+                                             WORLD_EXECUTE
+                                             WORLD_READ
+)
+install(DIRECTORY ${LIBOUTPATH}/ DESTINATION ${PROJECTNAME}/lib 
+                                 PATTERN "*"
+                                 PERMISSIONS OWNER_EXECUTE
+                                             OWNER_WRITE
+                                             OWNER_READ
+                                             GROUP_EXECUTE
+                                             GROUP_READ
+                                             WORLD_EXECUTE
+                                             WORLD_READ
+)

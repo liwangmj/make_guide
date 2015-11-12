@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
+project(cmake)
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/toolchain)
+set(PROJECTNAME "${PROJECT_NAME}")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/toolchain")
 include(toolchain/Rules.cmake)
 
 add_subdirectory(src/example_lib)

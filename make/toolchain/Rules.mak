@@ -41,6 +41,7 @@ install:
 	mkdir -p ${CDESTDIR}/${PROJECTNAME}/include
 	cp -rf ${APPOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/bin
 	cp -rf ${DLLOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
+	cp -rf ${LIBOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
 	cp -rf ${PROJECTPATH}/include/* ${CDESTDIR}/${PROJECTNAME}/include
 	chmod 755 -R ${CDESTDIR}/${PROJECTNAME}/bin
 	chmod 755 -R ${DLLOUTPATH}/* ${CDESTDIR}/${PROJECTNAME}/lib
