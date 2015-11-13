@@ -2,7 +2,7 @@ TARGET = ${APPOUTPATH}/runtest
 SUBDIRS =
 OBJECTS = main.o
 
-all: ${OBJECTS}
+all: subdirs ${OBJECTS}
 	${CXX} -o ${TARGET} ${OBJECTS} ${LDFLAGS} ${INCLUDES}
 
 clean: cleansubdirs

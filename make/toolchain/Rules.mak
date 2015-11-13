@@ -2,7 +2,7 @@ CVER ?= release
 CCPU ?= 64
 CPLATFORM ?= linux
 CCOMPILER ?= g++
-CDESTDIR ?= /usr/local
+PREFIX ?= /usr/local
 
 ifeq ($(CVER), debug)
 else
@@ -38,16 +38,16 @@ all: subdirs
 
 .PHONY: install
 install:
-	@(mkdir -p ${CDESTDIR}/bin)
-	@(mkdir -p ${CDESTDIR}/lib)
-	@(mkdir -p ${CDESTDIR}/include)
-	cp -rf ${APPOUTPATH}/* ${CDESTDIR}/bin
-	cp -rf ${DLLOUTPATH}/* ${CDESTDIR}/lib
-	cp -rf ${LIBOUTPATH}/* ${CDESTDIR}/lib
-	cp -rf ${PROJECTPATH}/include/* ${CDESTDIR}/include
-	chmod 755 -R ${CDESTDIR}/bin
-	chmod 755 -R ${CDESTDIR}/lib
-	chmod 755 -R ${CDESTDIR}/include
+	@(mkdir -p ${PREFIX}/bin)
+	@(mkdir -p ${PREFIX}/lib)
+	@(mkdir -p ${PREFIX}/include)
+	cp -rf ${APPOUTPATH}/* ${PREFIX}/bin
+	cp -rf ${DLLOUTPATH}/* ${PREFIX}/lib
+	cp -rf ${LIBOUTPATH}/* ${PREFIX}/lib
+	cp -rf ${PROJECTPATH}/include/* ${PREFIX}/include
+	chmod 755 -R ${PREFIX}/bin
+	chmod 755 -R ${PREFIX}/lib
+	chmod 755 -R ${PREFIX}/include
 
 .PHONY: test
 test:
@@ -70,10 +70,10 @@ help:
 	@echo "  CCPU           ""=32或=64或其他"
 	@echo "  CPLATFORM      ""=linux或其他平台"
 	@echo "  CCOMPILER      ""=g++或其他平台"
-	@echo "  CDESTDIR       ""=/usr/local或者自定义目录"
+	@echo "  PREFIX       ""=/usr/local或者自定义目录"
 	@echo "Example:"
 	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++ all"
-	@echo "  make CDESTDIR=/usr/local install"
+	@echo "  make PREFIX=/usr/local install"
 	@echo "  make CVER=debug clean"
 	@echo "  make CVER=debug test"
 	@echo "--------------------------------------------------------------"
