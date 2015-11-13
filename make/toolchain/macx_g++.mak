@@ -1,4 +1,4 @@
-export LD_LIBRARY_PATH=${APPOUTPATH}
+export DYLD_LIBRARY_PATH=${APPOUTPATH}
 
 CCACHE := ccache
 OBJCOPY := objcopy
@@ -19,15 +19,15 @@ ifeq ($(CVER), debug)
     CXXFLAGS += -g -D__DEBUG -fPIC
     
     ifeq ($(CCPU), 64)
-        CFLAGS += -m64 -D__LINUX_GXX_64
-        CXXFLAGS += -m64 -D__LINUX_GXX_64
+        CFLAGS += -m64 -D__MACX_GXX_64
+        CXXFLAGS += -m64 -D__MACX_GXX_64
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
 
     else ifeq ($(CCPU), 32)
-        CFLAGS += -m32 -D__LINUX_GXX_32
-        CXXFLAGS += -m32 -D__LINUX_GXX_32
+        CFLAGS += -m32 -D__MACX_GXX_32
+        CXXFLAGS += -m32 -D__MACX_GXX_32
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
@@ -41,15 +41,15 @@ else
     CXXFLAGS += -O3 -Wall -fPIC
     
     ifeq ($(CCPU), 64)
-        CFLAGS += -m64 D__LINUX_GXX_64
-        CXXFLAGS += -m64 -D__LINUX_GXX_64
+        CFLAGS += -m64 D__MACX_GXX_64
+        CXXFLAGS += -m64 -D__MACX_GXX_64
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
 
     else ifeq ($(CCPU), 32)
-        CFLAGS += -m32 -D__LINUX_GXX_32
-        CXXFLAGS += -m32 -D__LINUX_GXX_32
+        CFLAGS += -m32 -D__MACX_GXX_32
+        CXXFLAGS += -m32 -D__MACX_GXX_32
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
                    -lexample_dll_${APPOUTSUFFIX}
