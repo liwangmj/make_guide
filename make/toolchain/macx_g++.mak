@@ -10,13 +10,15 @@ LD := ld
 RM := rm -f
 ARFLAGS := rcs
 LDFLAGS := -lm -Wl,--rpath=./
+CFLAGS += -fPIC
+CXXFLAGS += -fPIC
 
 ifeq ($(CVER), debug)
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.so
-    CFLAGS += -g -D__DEBUG -fPIC
-    CXXFLAGS += -g -D__DEBUG -fPIC
+    CFLAGS += -g -D__DEBUG
+    CXXFLAGS += -g -D__DEBUG
     
     ifeq ($(CCPU), 64)
         CFLAGS += -m64 -D__MACX_GXX_64
@@ -37,11 +39,11 @@ else
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.so
-    CFLAGS += -O3 -Wall -fPIC
-    CXXFLAGS += -O3 -Wall -fPIC
+    CFLAGS += -O3 -Wall
+    CXXFLAGS += -O3 -Wall
     
     ifeq ($(CCPU), 64)
-        CFLAGS += -m64 D__MACX_GXX_64
+        CFLAGS += -m64 -D__MACX_GXX_64
         CXXFLAGS += -m64 -D__MACX_GXX_64
         LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
         LDFLAGS += -L${DLLOUTPATH} \
