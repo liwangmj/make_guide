@@ -8,7 +8,7 @@ CONFIG(debug, debug|release) {
         DEFINES += __MACX_GXX_64
         
         LIBSLIST += -L$${LIBOUTPATH} \
-                   -lexample_lib_$${OUTSUFFIX}
+                    -lexample_lib_$${OUTSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
@@ -16,7 +16,7 @@ CONFIG(debug, debug|release) {
         DEFINES += __MACX_GXX_32
 
         LIBSLIST += -L$${LIBOUTPATH} \
-                   -lexample_lib_$${OUTSUFFIX}
+                    -lexample_lib_$${OUTSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }
@@ -28,7 +28,7 @@ CONFIG(debug, debug|release) {
         DEFINES += __MACX_GXX_64
 
         LIBSLIST += -L$${LIBOUTPATH} \
-                   -lexample_lib_$${OUTSUFFIX}
+                    -lexample_lib_$${OUTSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
@@ -36,7 +36,7 @@ CONFIG(debug, debug|release) {
         DEFINES += __MACX_GXX_32
 
         LIBSLIST += -L$${LIBOUTPATH} \
-                   -lexample_lib_$${OUTSUFFIX}
+                    -lexample_lib_$${OUTSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }
