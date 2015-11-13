@@ -1,9 +1,19 @@
 set(PROJECTPATH ${CMAKE_SOURCE_DIR})
- 
+
+if (NOT CMAKE_BUILD_TYPE)
+    option(BUILD_RELEASE "debug or release" ON)
+endif ()
+
 if (CMAKE_BUILD_TYPE MATCHES "debug")
     set(CVER "debug")
-else ()
+else (CMAKE_BUILD_TYPE MATCHES "release")
     set(CVER "release")
+else ()
+    if (BUILD_RELEASE)
+        set(CVER "release")
+    else ()
+        set(CVER "debug")
+    endif ()
 endif ()
 
 if (CMAKE_SIZEOF_VOID_P EQUAL 8)
