@@ -6,7 +6,7 @@ endif ()
 
 if (CMAKE_BUILD_TYPE MATCHES "debug")
     set(CVER "debug")
-else (CMAKE_BUILD_TYPE MATCHES "release")
+elseif (CMAKE_BUILD_TYPE MATCHES "release")
     set(CVER "release")
 else ()
     if (BUILD_RELEASE)
@@ -99,3 +99,63 @@ install(DIRECTORY ${PROJECTPATH}/include/ DESTINATION include
                                              WORLD_EXECUTE
                                              WORLD_READ
 )
+
+enable_testing()
+
+macro (DO_ADD_TEST RUNTESTNAME)
+    add_test(NAME ${RUNTESTNAME}_noarg COMMAND ${RUNTESTNAME})
+endmacro ()
+
+macro (DO_ADD_TEST_1 RUNTESTNAME ARG1 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1} COMMAND ${RUNTESTNAME} ${ARG1})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_2 RUNTESTNAME ARG1 ARG2 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_3 RUNTESTNAME ARG1 ARG2 ARG3 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_4 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_5 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 ARG5 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4} ${ARG5})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_6 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 ARG5 ARG6 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4} ${ARG5} ${ARG6})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_7 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 ARG5 ARG6 ARG7 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4} ${ARG5} ${ARG6} ${ARG7})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_8 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 ARG5 ARG6 ARG7 ARG8 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7}_${ARG8} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4} ${ARG5} ${ARG6} ${ARG7} ${ARG8})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7}_${ARG8}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
+
+macro (DO_ADD_TEST_9 RUNTESTNAME ARG1 ARG2 ARG3 ARG4 ARG5 ARG6 ARG7 ARG8 ARG9 RESULT)
+    add_test(NAME ${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7}_${ARG8}_${ARG9} COMMAND ${RUNTESTNAME} ${ARG1} ${ARG2} ${ARG3} ${ARG4} ${ARG5} ${ARG6} ${ARG7} ${ARG8} ${ARG9})
+    set_tests_properties(${RUNTESTNAME}_${ARG1}_${ARG2}_${ARG3}_${ARG4}_${ARG5}_${ARG6}_${ARG7}_${ARG8}_${ARG9}
+                         PROPERTIES PASS_REGULAR_EXPRESSION ${RESULT})
+endmacro ()
