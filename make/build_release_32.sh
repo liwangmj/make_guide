@@ -3,6 +3,6 @@
 cd ${PWD}
 make CVER=debug CCPU=32 clean
 make CVER=release CCPU=32 clean
-make CVER=release
+make CVER=release CCPU=32
 
 exit 0
