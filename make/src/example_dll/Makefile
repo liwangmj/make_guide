@@ -11,6 +11,6 @@ all: subdirs ${OBJECTS}
 #	ln -sf ${LIBRARY} ${SONAME}
 
 clean: cleansubdirs
-	-(${RM} ${TARGET} ${OBJECTS})
+	-(${RM} ${OBJECTS})
 
 include ${MAKEINCLUDE}

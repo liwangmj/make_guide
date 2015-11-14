@@ -9,14 +9,15 @@ AR := ar
 LD := ld
 RM := rm -f
 ARFLAGS := rcs
-LDFLAGS := -lm -Wl,-rpath=./:./lib:./plugin
-CFLAGS += -fPIC
-CXXFLAGS += -fPIC
+LDFLAGS := -lm
+CFLAGS := -fPIC
+CXXFLAGS := -fPIC
 
 ifeq ($(CVER), debug)
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d.so
+    LDFLAGS += -Wl,-rpath=${APPOUTPATH}:${LIBOUTPATH}:${DLLOUTPATH}
     CFLAGS += -g -D__DEBUG
     CXXFLAGS += -g -D__DEBUG
     
@@ -39,6 +40,7 @@ else
     APPOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}
     LIBOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.a
     DLLOUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}.so
+    LDFLAGS += -Wl,-rpath=./:./lib:./plugin
     CFLAGS += -O3 -Wall
     CXXFLAGS += -O3 -Wall
     
@@ -57,3 +59,4 @@ else
                    -lexample_dll_${APPOUTSUFFIX}
     endif
 endif
+
