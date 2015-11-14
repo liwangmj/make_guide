@@ -9,7 +9,7 @@ AR := ar
 LD := ld
 RM := rm -f
 ARFLAGS := rcs
-LDFLAGS := -lm -Wl,--rpath=./
+LDFLAGS := -lm -Wl,-rpath=./:./lib:./plugin
 CFLAGS += -fPIC
 CXXFLAGS += -fPIC
 

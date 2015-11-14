@@ -1,4 +1,4 @@
-QMAKE_LFLAGS += -Wl,--rpath=./
+QMAKE_LFLAGS += -Wl,-rpath=./:./lib:./plugin
 
 CONFIG(debug, debug|release) {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}_d
