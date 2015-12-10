@@ -5,6 +5,9 @@ QMAKE_LFLAGS_RELEASE += /NODEFAULTLIB:libcmt.lib
 #QMAKE_CXXFLAGS_DEBUG = -Zi -MDd
 QMAKE_LFLAGS_DEBUG += /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcprtd.lib
 
+LIBSUFFIX = .lib
+DLLSUFFIX = .dll
+
 CONFIG(debug, debug|release) {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}_d
     DEFINES += __DEBUG
@@ -12,16 +15,14 @@ CONFIG(debug, debug|release) {
     contains(CVER, 64) {
         DEFINES += __WIN32_VC10_64
         
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/example_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
     } else {
         DEFINES += __WIN32_VC10_32
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/example_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }
@@ -32,16 +33,14 @@ CONFIG(debug, debug|release) {
     contains(CVER, 64) {
         DEFINES += __WIN32_VC10_64
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/example_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
     } else {
         DEFINES += __WIN32_VC10_32
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/example_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }

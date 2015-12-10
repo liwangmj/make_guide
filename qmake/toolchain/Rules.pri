@@ -1,4 +1,4 @@
-PROJECTPATH = e:/Wim/Desktop/qmake
+PROJECTPATH = E:/SourceCode\qmake
 
 CONFIG(debug, debug|release) {
     CVER = debug

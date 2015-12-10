@@ -1,3 +1,6 @@
+LIBSUFFIX = .a
+DLLSUFFIX = .dylib
+
 CONFIG(debug, debug|release) {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}_d
     DEFINES += __DEBUG
@@ -6,16 +9,14 @@ CONFIG(debug, debug|release) {
     contains(CVER, 64) {
         DEFINES += __MACX_GXX_64
         
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/libexample_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
     } else {
         DEFINES += __MACX_GXX_32
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/libexample_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }
@@ -27,16 +28,14 @@ CONFIG(debug, debug|release) {
     contains(CVER, 64) {
         DEFINES += __MACX_GXX_64
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/libexample_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
 
     } else {
         DEFINES += __MACX_GXX_32
 
-        LIBSLIST += -L$${LIBOUTPATH} \
-                    -lexample_lib_$${OUTSUFFIX}
+        LIBSLIST += $${LIBOUTPATH}/libexample_lib_$${OUTSUFFIX}$${LIBSUFFIX}
         LIBSLIST += -L$${DLLOUTPATH} \
                     -lexample_dll_$${OUTSUFFIX}
     }
