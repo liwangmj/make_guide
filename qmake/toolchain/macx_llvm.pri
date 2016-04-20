@@ -1,10 +1,12 @@
+QMAKE_CFLAGS += -fPIC
+
 LIBSUFFIX = .a
 DLLSUFFIX = .dylib
 
 CONFIG(debug, debug|release) {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}_d
     DEFINES += __DEBUG
-    QMAKE_LFLAGS += -Wl,-rpath=${APPOUTPATH}:${LIBOUTPATH}:${DLLOUTPATH}
+    QMAKE_LFLAGS += -Wl,-rpath=$${APPOUTPATH}:$${LIBOUTPATH}:$${DLLOUTPATH}
 
     contains(CVER, 64) {
         DEFINES += __MACX_GXX_64

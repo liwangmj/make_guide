@@ -1,3 +1,5 @@
+QMAKE_CFLAGS += -fPIC
+
 LIBSUFFIX = .a
 DLLSUFFIX = .dylib
 

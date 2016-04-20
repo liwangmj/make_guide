@@ -1,9 +1,12 @@
+QMAKE_CFLAGS += -fPIC
+
 LIBSUFFIX = .a
 DLLSUFFIX = .dll
 
 CONFIG(debug, debug|release) {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}_d
     DEFINES += __DEBUG
+    QMAKE_LFLAGS += -Wl,-rpath=$${APPOUTPATH}:$${LIBOUTPATH}:$${DLLOUTPATH}
 
     contains(CVER, 64) {
         DEFINES += __WIN32_GXX_64
@@ -22,6 +25,7 @@ CONFIG(debug, debug|release) {
 
 } else {
     OUTSUFFIX = $${CPLATFORM}_$${CCOMPILE}_$${CCPU}
+    QMAKE_LFLAGS += -Wl,-rpath=./:./lib:./plugin
 
     contains(CVER, 64) {
         DEFINES += __WIN32_GXX_64

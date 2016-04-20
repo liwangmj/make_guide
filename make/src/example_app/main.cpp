@@ -8,6 +8,8 @@
 
 int main(int argc, char **argv)
 {
+    (void)argc;
+    (void)argv;
 #ifdef __DEBUG
     example_lib_test();
     example_dll_test();
