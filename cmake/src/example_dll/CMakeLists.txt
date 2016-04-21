@@ -8,11 +8,15 @@ add_definitions(-D__DLL_LIBRARY)
 aux_source_directory(. SRC_LIST)
 
 add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
-#target_link_libraries(${PROJECT_NAME} ${${PROJECT_NAME}_EXTRA_LDFLAGS}
-#                                      "-Wl,--whole-archive"
-#                                      ${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}
-#                                      "-Wl,--no-whole-archive"
-#)
+if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+else ()
+#    target_link_libraries(${PROJECT_NAME} ${${PROJECT_NAME}_EXTRA_LDFLAGS}
+#                                          "-Wl,--whole-archive"
+#                                          ${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}
+#                                          "-Wl,--no-whole-archive"
+#    )
+endif ()
+
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ${DLLSUFFIX})
