@@ -4,18 +4,6 @@ CPLATFORM ?= linux
 CCOMPILER ?= g++
 PREFIX ?= /usr/local
 
-ifeq ($(CVER), debug)
-else
-    CVER := release
-endif
-
-ifeq ($(CCPU), 8)
-else ifeq ($(CCPU), 16)
-else ifeq ($(CCPU), 32)
-else
-    CCPU := 64
-endif
-
 APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
 DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
 LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
