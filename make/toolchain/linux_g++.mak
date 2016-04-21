@@ -40,8 +40,8 @@ ifeq ($(CVER), debug)
 else
     OUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
     LDFLAGS += -Wl,-rpath=./:./lib:./plugin
-    CFLAGS += -O3 -Wall
-    CXXFLAGS += -O3 -Wall
+    CFLAGS += -rdynamic -O3 -Wall
+    CXXFLAGS += -rdynamic -O3 -Wall
     
     ifeq ($(CCPU), 64)
         CFLAGS += -m64 -D__LINUX_GXX_64
