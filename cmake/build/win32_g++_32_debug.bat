@@ -4,7 +4,7 @@ rd /s /q %~dp0..\..\build\cmake_win32_g++_32_debug
 md %~dp0..\..\build\cmake_win32_g++_32_debug\
 cd %~dp0..\..\build\cmake_win32_g++_32_debug\
 
-cmake -DCVER=debug -DCCPU=32 -DCCOMPILE=g++ -DCPLATFORM=win32 -G"MinGW Makefiles" -DCMAKE_C_COMPILER=mingw32-gcc.exe -DCMAKE_CXX_COMPILER=mingw32-g++.exe -DCMAKE_MAKE_PROGRAM=mingw32-make.exe ..\..\cmake
+cmake -DCVER=debug -DCCPU=32 -DCCOMPILE=g++ -DCPLATFORM=win32 -G"MinGW Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=mingw32-gcc.exe -DCMAKE_CXX_COMPILER=mingw32-g++.exe -DCMAKE_MAKE_PROGRAM=mingw32-make.exe ..\..\cmake
 make
 
 cd ..
