@@ -10,8 +10,8 @@ LD := ld
 RM := rm -f
 ARFLAGS := -ru
 LDFLAGS := -lm
-CFLAGS := -fPIC
-CXXFLAGS := -fPIC
+CFLAGS := -fPIC -fshort-wchar
+CXXFLAGS := -fPIC -fshort-wchar
 
 LIBSUFFIX = .a
 DLLSUFFIX = .so
@@ -40,8 +40,8 @@ ifeq ($(CVER), debug)
 else
     OUTSUFFIX := ${CPLATFORM}_${CCOMPILER}_${CCPU}_d
     LDFLAGS += -Wl,-rpath=./:./lib:./plugin
-    CFLAGS += -rdynamic -O3 -Wall
-    CXXFLAGS += -rdynamic -O3 -Wall
+    CFLAGS += -O3 -Wall -rdynamic -ldl
+    CXXFLAGS += -O3 -Wall -rdynamic -ldl
     
     ifeq ($(CCPU), 64)
         CFLAGS += -m64 -D__LINUX_GXX_64

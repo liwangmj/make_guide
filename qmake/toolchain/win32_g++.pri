@@ -1,7 +1,7 @@
-QMAKE_CFLAGS += -fPIC
-QMAKE_CXXFLAGS += -fPIC
-QMAKE_CFLAGS_RELEASE += -rdynamic -O2 -Wall
-QMAKE_CXXFLAGS_RELEASE += -rdynamic -O2 -Wall
+QMAKE_CFLAGS += -fPIC -fshort-wchar
+QMAKE_CXXFLAGS += -fPIC -fshort-wchar
+QMAKE_CFLAGS_RELEASE += -O2 -Wall -rdynamic -ldl
+QMAKE_CXXFLAGS_RELEASE += -O2 -Wall -rdynamic -ldl
 QMAKE_LFLAGS_RELEASE += -Wl,-rpath=./:./lib:./plugin
 QMAKE_CFLAGS_DEBUG += -g
 QMAKE_CXXFLAGS_DEBUG += -g
