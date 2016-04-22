@@ -10,4 +10,3 @@ SUBDIRS = src/example_lib \
           testing
 
 include ${MAKEINCLUDE}
-

@@ -1,5 +1,3 @@
-include ($${PWD}/toolchain/Rules.pri)
-
 TEMPLATE = subdirs
 CONFIG += ordered
 

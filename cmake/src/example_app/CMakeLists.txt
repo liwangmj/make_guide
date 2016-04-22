@@ -1,7 +1,5 @@
 project(example_app)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/../../toolchain/Rules.cmake)
-
 include_directories(${INCLUDELIST})
 link_directories(${LIBDIRLIST})
 

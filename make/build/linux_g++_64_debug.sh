@@ -2,8 +2,8 @@
 
 cd ${PWD}/../
 
-make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++ clean
-make CVER=release CCPU=64 CPLATFORM=linux CCOMPILER=g++ clean
-make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++
+make CVER=debug CCPU=64 CCCOMPILER=g++ PLATFORM=linux clean
+make CVER=release CCPU=64 CCCOMPILER=g++ PLATFORM=linux clean
+make CVER=debug CCPU=64 CCCOMPILER=g++ PLATFORM=linux 
 
 exit 0

@@ -1,7 +1,5 @@
 project(example_lib_${OUTSUFFIX})
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/../../toolchain/Rules.cmake)
-
 include_directories(${INCLUDELIST})
 
 aux_source_directory(. SRC_LIST)

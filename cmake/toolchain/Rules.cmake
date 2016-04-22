@@ -1,56 +1,31 @@
 set(PROJECTPATH ${CMAKE_SOURCE_DIR})
 
-if (NOT CMAKE_BUILD_TYPE)
-    option(BUILD_RELEASE "debug or release" ON)
-endif ()
-
-if (CMAKE_BUILD_TYPE MATCHES "debug")
-    set(CVER "debug")
-elseif (CMAKE_BUILD_TYPE MATCHES "release")
+if (NOT DEFINED CVER)
     set(CVER "release")
-else ()
-    if (BUILD_RELEASE)
-        set(CVER "release")
-    else ()
-        set(CVER "debug")
-    endif ()
+    message("[WARNING] NOT DEFINED 'CVER'. Default '${CVER}'")
 endif ()
 
-if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-    set(CCPU 64)
-elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
-    set(CCPU 32)
-elseif (CMAKE_SIZEOF_VOID_P EQUAL 2)
-    set(CCPU 16)
-elseif (CMAKE_SIZEOF_VOID_P 1)
-    set(CCPU 8)
-else ()
-    set(CCPU 32)
+if (NOT DEFINED CCPU)
+    set(CCPU "64")
+    message("[WARNING] NOT DEFINED 'CCPU'. Default '${CCPU}'")
 endif ()
 
-if (CMAKE_COMPILER_IS_GNUCXX)
+if (NOT DEFINED CCOMPILE)
     set(CCOMPILE "g++")
-elseif (CMAKE_COMPILER_IS_GNUCC)
-    set(CCOMPILE "gcc")
-elseif (CMAKE_COMPILER_IS_CLANGXX)
-    set(CCOMPILE "clang")
-elseif (MSVC)
-    set(CCOMPILE "msvc")
+    message("[WARNING] NOT DEFINED 'CCOMPILE'. Default '${CCOMPILE}'")
 endif ()
 
-if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    add_definitions(-D__LINUX)
+if (NOT DEFINED CPLATFORM)
     set(CPLATFORM "linux")
-elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    add_definitions(-D__WIN32)
-    set(CPLATFORM "win32")
-elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    add_definitions(-D__MACX)
-    set(CPLATFORM "macx")
-else ()
-    add_definitions(-D__UNIX)
-    set(CPLATFORM "Unix")
+    message("[WARNING] NOT DEFINED 'CPLATFORM'. Default '${CPLATFORM}'")
 endif ()
+
+message(STATUS "[INFO] CVER is: ${CVER}")
+message(STATUS "[INFO] CCPU is: ${CCPU}")
+message(STATUS "[INFO] CCOMPILE is: ${CCOMPILE}")
+message(STATUS "[INFO] CPLATFORM is: ${CPLATFORM}")
+
+set(CMAKE_INSTALL_PREFIX "${PROJECTPATH}/packaging")
 
 set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILE}_${CCPU}/${CVER}")
 set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILE}_${CCPU}/${CVER}")
@@ -63,45 +38,33 @@ set(INCLUDELIST "${INCLUDELIST}"
 
 include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILE}.cmake)
 
-install(DIRECTORY ${APPOUTPATH}/ DESTINATION bin
-                                 PATTERN "*"
-                                 PERMISSIONS OWNER_EXECUTE
-                                             OWNER_WRITE
-                                             OWNER_READ
-                                             GROUP_EXECUTE
-                                             GROUP_READ
-                                             WORLD_EXECUTE
-                                             WORLD_READ
+install(DIRECTORY ${APPOUTPATH}/
+                  DESTINATION bin
+                  PATTERN "*"
+                  PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                              GROUP_EXECUTE GROUP_READ
+                              WORLD_EXECUTE WORLD_READ
 )
-install(DIRECTORY ${DLLOUTPATH}/ DESTINATION lib
-                                 PATTERN "*"
-                                 PERMISSIONS OWNER_EXECUTE
-                                             OWNER_WRITE
-                                             OWNER_READ
-                                             GROUP_EXECUTE
-                                             GROUP_READ
-                                             WORLD_EXECUTE
-                                             WORLD_READ
+install(DIRECTORY ${DLLOUTPATH}/
+                  DESTINATION lib
+                  PATTERN "*"
+                  PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                              GROUP_EXECUTE GROUP_READ
+                              WORLD_EXECUTE WORLD_READ
 )
-install(DIRECTORY ${LIBOUTPATH}/ DESTINATION lib
-                                 PATTERN "*"
-                                 PERMISSIONS OWNER_EXECUTE
-                                             OWNER_WRITE
-                                             OWNER_READ
-                                             GROUP_EXECUTE
-                                             GROUP_READ
-                                             WORLD_EXECUTE
-                                             WORLD_READ
+install(DIRECTORY ${LIBOUTPATH}/
+                  DESTINATION lib
+                  PATTERN "*"
+                  PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                              GROUP_EXECUTE GROUP_READ
+                              WORLD_EXECUTE WORLD_READ
 )
-install(DIRECTORY ${PROJECTPATH}/include/ DESTINATION include
-                                 PATTERN "*"
-                                 PERMISSIONS OWNER_EXECUTE
-                                             OWNER_WRITE
-                                             OWNER_READ
-                                             GROUP_EXECUTE
-                                             GROUP_READ
-                                             WORLD_EXECUTE
-                                             WORLD_READ
+install(DIRECTORY ${PROJECTPATH}/include/
+                  DESTINATION include
+                  PATTERN "*"
+                  PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                              GROUP_EXECUTE GROUP_READ
+                              WORLD_EXECUTE WORLD_READ
 )
 
 enable_testing()
