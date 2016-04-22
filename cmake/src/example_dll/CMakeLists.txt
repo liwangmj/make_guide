@@ -6,7 +6,7 @@ add_definitions(-D__DLL_LIBRARY)
 aux_source_directory(. SRC_LIST)
 
 add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
-if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+if (CPLATFORM MATCHES "win32")
 else ()
 #    target_link_libraries(${PROJECT_NAME} ${${PROJECT_NAME}_EXTRA_LDFLAGS}
 #                                          "-Wl,--whole-archive"
