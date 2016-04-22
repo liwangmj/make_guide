@@ -5,7 +5,7 @@ cd ${PWD}/../../build/cmake_linux_g++_64_debug/
 rm -rf *
 
 cmake -DCVER=debug -DCCPU=64 -DCCOMPILE=g++ -DCPLATFORM=linux ../../cmake
-make; make test; make install
+make
 
 exit 0
 
