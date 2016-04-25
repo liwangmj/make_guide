@@ -1,12 +1,12 @@
 CVER ?= release
-CCPU ?= 64
-CCOMPILER ?= g++
+CCPU ?= x86-64
+CCOMPILER ?= gcc
 CPLATFORM ?= linux
 PREFIX ?= ${PROJECTPATH}/packaging
 
-APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
-DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
-LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCOMPILER}_${CCPU}/${CVER}
+APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
+DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
+LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
 $(shell mkdir -p ${APPOUTPATH})
 $(shell mkdir -p ${DLLOUTPATH})
 $(shell mkdir -p ${LIBOUTPATH})
@@ -17,7 +17,7 @@ INCLUDES := -I${PROJECTPATH}/include/example_app \
 
 FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
 
-export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILER}.mak
+export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/toolchain/${CPLATFORM}_${CCPU}_${CCOMPILER}.mak
 include ${MAKEINCLUDE_PLATFORM}
 
 all: subdirs
@@ -53,12 +53,12 @@ help:
 	@echo "  make help      ""显示帮助列表"
 	@echo "Params:"
 	@echo "  CVER           ""=debug或则=release"
-	@echo "  CCPU           ""=32或=64或其他"
+	@echo "  CCPU           ""=x86或=x86-64或其他"
 	@echo "  CPLATFORM      ""=linux或其他平台"
-	@echo "  CCOMPILER      ""=g++或其他平台"
+	@echo "  CCOMPILER      ""=gcc或其他平台"
 	@echo "  PREFIX       ""=/usr/local或者自定义目录"
 	@echo "Example:"
-	@echo "  make CVER=debug CCPU=64 CPLATFORM=linux CCOMPILER=g++ all"
+	@echo "  make CPLATFORM=linux CCPU=x86-64 CCOMPILER=gcc CVER=debug all"
 	@echo "  make PREFIX=/usr/local install"
 	@echo "  make CVER=debug clean"
 	@echo "  make CVER=debug test"
