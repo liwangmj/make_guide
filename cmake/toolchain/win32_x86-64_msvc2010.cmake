@@ -1,0 +1,35 @@
+set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}")
+set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}")
+set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILE}")
+
+#set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /Zi /MDd")
+#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi /MDd")
+#set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrtd.lib"
+#set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /O2 /MD")
+#set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /MD")
+#set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:msvcrt.lib"
+
+set(LIBSUFFIX ".lib")
+set(DLLSUFFIX ".dll")
+
+add_definitions(-D__WIN32)
+
+if (CVER MATCHES "debug")
+    set(OUTSUFFIX "${CPLATFORM}_${CCPU}_${CCOMPILE}_d")
+    add_definitions(-D__DEBUG)
+    
+    set(LIBDIRLIST "${LIBOUTPATH}/${CVER} ${DLLOUTPATH}/${CVER}")
+    set(LIBSLIST "${LIBSLIST}"
+                 "${LIBOUTPATH}/${CVER}/example_lib_${OUTSUFFIX}${LIBSUFFIX}"
+                 "example_dll_${OUTSUFFIX}"
+    )
+
+else ()
+    set(OUTSUFFIX "${CPLATFORM}_${CCPU}_${CCOMPILE}")
+    
+    set(LIBDIRLIST "${LIBOUTPATH}/${CVER} ${DLLOUTPATH}/${CVER}")
+    set(LIBSLIST "${LIBSLIST}"
+                 "${LIBOUTPATH}/${CVER}/example_lib_${OUTSUFFIX}${LIBSUFFIX}"
+                 "example_dll_${OUTSUFFIX}"
+    )
+endif ()

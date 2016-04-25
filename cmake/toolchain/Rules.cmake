@@ -5,14 +5,14 @@ if (NOT DEFINED CVER)
     message("[WARNING] NOT DEFINED 'CVER'. Default '${CVER}'")
 endif ()
 
-if (NOT DEFINED CCPU)
-    set(CCPU "64")
-    message("[WARNING] NOT DEFINED 'CCPU'. Default '${CCPU}'")
+if (NOT DEFINED CCOMPILE)
+    set(CCOMPILE "gcc")
+    message("[WARNING] NOT DEFINED 'CCOMPILE'. Default '${CCOMPILE}'")
 endif ()
 
-if (NOT DEFINED CCOMPILE)
-    set(CCOMPILE "g++")
-    message("[WARNING] NOT DEFINED 'CCOMPILE'. Default '${CCOMPILE}'")
+if (NOT DEFINED CCPU)
+    set(CCPU "x86-64")
+    message("[WARNING] NOT DEFINED 'CCPU'. Default '${CCPU}'")
 endif ()
 
 if (NOT DEFINED CPLATFORM)
@@ -21,22 +21,22 @@ if (NOT DEFINED CPLATFORM)
 endif ()
 
 message(STATUS "[INFO] CVER is: ${CVER}")
-message(STATUS "[INFO] CCPU is: ${CCPU}")
 message(STATUS "[INFO] CCOMPILE is: ${CCOMPILE}")
+message(STATUS "[INFO] CCPU is: ${CCPU}")
 message(STATUS "[INFO] CPLATFORM is: ${CPLATFORM}")
 
 set(CMAKE_INSTALL_PREFIX "${PROJECTPATH}/packaging")
 
-set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILE}_${CCPU}/${CVER}")
-set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCOMPILE}_${CCPU}/${CVER}")
-set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCOMPILE}_${CCPU}/${CVER}")
+set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
+set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
+set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
 
 set(INCLUDELIST "${INCLUDELIST}"
                 "${PROJECTPATH}/include/example_lib"
                 "${PROJECTPATH}/include/example_dll"
 )
 
-include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCOMPILE}.cmake)
+include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCPU}_${CCOMPILE}.cmake)
 
 install(DIRECTORY ${APPOUTPATH}/
                   DESTINATION bin
