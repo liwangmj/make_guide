@@ -10,8 +10,8 @@ LD := ld
 RM := rm -f
 ARFLAGS := -ru
 LDFLAGS := -lm
-CFLAGS := -m32 -fPIC -D__LINUX
-CXXFLAGS := -m32 -fPIC -D__LINUX
+CFLAGS := -fPIC -D__LINUX
+CXXFLAGS := -fPIC -D__LINUX
 
 LIBSUFFIX = .a
 DLLSUFFIX = .so
@@ -32,7 +32,7 @@ else
     CFLAGS += -O3 -Wall -rdynamic -ldl
     CXXFLAGS += -O3 -Wall -rdynamic -ldl
 
-    LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
+    LDFLAGS += ${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}
     LDFLAGS += -L${DLLOUTPATH} \
                -lexample_dll_${OUTSUFFIX}
 endif

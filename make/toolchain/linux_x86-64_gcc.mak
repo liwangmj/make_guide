@@ -32,7 +32,7 @@ else
     CFLAGS += -O3 -Wall -rdynamic -ldl
     CXXFLAGS += -O3 -Wall -rdynamic -ldl
 
-    LDFLAGS += ${LIBOUTPATH}/libexample_lib_${LIBOUTSUFFIX}
+    LDFLAGS += ${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}
     LDFLAGS += -L${DLLOUTPATH} \
                -lexample_dll_${OUTSUFFIX}
 endif
