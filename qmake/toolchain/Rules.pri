@@ -7,26 +7,26 @@ CONFIG(debug, debug|release) {
 }
 
 contains(QMAKE_TARGET.arch, x86_64) {
-    CCPU = 64
+    CCPU = x86-64
 } else {
     contains(QMAKE_TARGET.arch, x86) {
-        CCPU = 32
+        CCPU = x86
     } else {
-        CCPU = 32
+        CCPU = x86
     }
 }
 
-win32-msvc2010 | win32-msvc2012 {
+win32-msvc2010 {
     CPLATFORM = win32
-    CCOMPILE = msvc
+    CCOMPILE = msvc2010
 }
 win32-g++ {
     CPLATFORM = win32
-    CCOMPILE = g++
+    CCOMPILE = gcc
 }
 macx-g++ {
     CPLATFORM = macx
-    CCOMPILE = g++
+    CCOMPILE = gcc
 }
 macx-llvm {
     CPLATFORM = macx
@@ -34,13 +34,13 @@ macx-llvm {
 }
 linux-g++ {
     CPLATFORM = linux
-    CCOMPILE = g++
+    CCOMPILE = gcc
 }
 
-APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCOMPILE}_$${CCPU}/$${CVER}
-include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCOMPILE}.pri)
+APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
+DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
+LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
+include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}.pri)
 
 INLCUDELIST += $${PROJECTPATH}/include/example_lib \
                $${PROJECTPATH}/include/example_dll
