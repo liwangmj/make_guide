@@ -1,33 +1,37 @@
+set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/")
+set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/")
+set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILE}/")
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
-set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -Wl,-rpath=${APPOUTPATH}:${DLLOUTPATH}:${LIBOUTPATH}")
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2 -Wall")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2 -Wall")
-set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -Wl,-rpath=./:./lib/:./plugin/")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
 set(LIBSUFFIX ".a")
-set(DLLSUFFIX ".dll")
+set(DLLSUFFIX ".dylib")
 
-add_definitions(-D__WIN32)
+add_definitions(-D__MACX)
 
 if (CVER MATCHES "debug")
     set(OUTSUFFIX "${CPLATFORM}_${CCPU}_${CCOMPILE}_d")
     add_definitions(-D__DEBUG)
-        
-    set(LIBDIRLIST "${LIBOUTPATH}/ ${DLLOUTPATH}/")
+    
+    set(LIBDIRLIST "${LIBOUTPATH}/${CVER}/ ${DLLOUTPATH}/${CVER}/")
     set(LIBSLIST "${LIBSLIST}"
-                 "${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}"
+                 "${LIBOUTPATH}/${CVER}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}"
                  "example_dll_${OUTSUFFIX}"
     )
 
 else ()
     set(OUTSUFFIX "${CPLATFORM}_${CCPU}_${CCOMPILE}")
     
-    set(LIBDIRLIST "${LIBOUTPATH}/ ${DLLOUTPATH}/")
+    set(LIBDIRLIST "${LIBOUTPATH}/${CVER}/ ${DLLOUTPATH}/${CVER}/")
     set(LIBSLIST "${LIBSLIST}"
-                 "${LIBOUTPATH}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}"
+                 "${LIBOUTPATH}/${CVER}/libexample_lib_${OUTSUFFIX}${LIBSUFFIX}"
                  "example_dll_${OUTSUFFIX}"
     )
 endif ()

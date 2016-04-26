@@ -25,34 +25,34 @@ message(STATUS "[INFO] CCOMPILE is: ${CCOMPILE}")
 message(STATUS "[INFO] CCPU is: ${CCPU}")
 message(STATUS "[INFO] CPLATFORM is: ${CPLATFORM}")
 
-set(CMAKE_INSTALL_PREFIX "${PROJECTPATH}/packaging")
+set(CMAKE_INSTALL_PREFIX "${PROJECTPATH}/packaging/")
 
-set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
-set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
-set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}")
+set(APPOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}/")
+set(DLLOUTPATH "${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}/")
+set(LIBOUTPATH "${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILE}/${CVER}/")
 
 set(INCLUDELIST "${INCLUDELIST}"
-                "${PROJECTPATH}/include/example_lib"
-                "${PROJECTPATH}/include/example_dll"
+                "${PROJECTPATH}/include/example_lib/"
+                "${PROJECTPATH}/include/example_dll/"
 )
 
 include(${PROJECTPATH}/toolchain/${CPLATFORM}_${CCPU}_${CCOMPILE}.cmake)
 
-install(DIRECTORY ${APPOUTPATH}/
+install(DIRECTORY ${APPOUTPATH}
                   DESTINATION bin
                   PATTERN "*"
                   PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                               GROUP_EXECUTE GROUP_READ
                               WORLD_EXECUTE WORLD_READ
 )
-install(DIRECTORY ${DLLOUTPATH}/
+install(DIRECTORY ${DLLOUTPATH}
                   DESTINATION lib
                   PATTERN "*"
                   PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                               GROUP_EXECUTE GROUP_READ
                               WORLD_EXECUTE WORLD_READ
 )
-install(DIRECTORY ${LIBOUTPATH}/
+install(DIRECTORY ${LIBOUTPATH}
                   DESTINATION lib
                   PATTERN "*"
                   PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
