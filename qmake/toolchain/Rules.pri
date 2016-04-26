@@ -30,7 +30,7 @@ macx-g++ {
 }
 macx-llvm {
     CPLATFORM = macx
-    CCOMPILE = llvm
+    CCOMPILE = clang
 }
 linux-g++ {
     CPLATFORM = linux
