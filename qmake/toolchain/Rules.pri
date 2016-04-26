@@ -1,4 +1,4 @@
-PROJECTPATH = E:/SourceCode/eclipse/make_guide/qmake
+PROJECTPATH = E:/SourceCode/eclipse/make_guide/qmake/
 
 CONFIG(debug, debug|release) {
     CVER = debug
@@ -37,10 +37,10 @@ linux-g++ {
     CCOMPILE = gcc
 }
 
-APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
-DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
-LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}
+APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}/
+DLLOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}/
+LIBOUTPATH = $${PROJECTPATH}/lib/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}/
 include ($${PROJECTPATH}/toolchain/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}.pri)
 
-INLCUDELIST += $${PROJECTPATH}/include/example_lib \
-               $${PROJECTPATH}/include/example_dll
+INLCUDELIST += $${PROJECTPATH}/include/example_lib/ \
+               $${PROJECTPATH}/include/example_dll/

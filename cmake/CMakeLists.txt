@@ -5,9 +5,9 @@ set(PROJECTNAME "${PROJECT_NAME}")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/toolchain/")
 include(toolchain/Rules.cmake)
 
-add_subdirectory(src/example_lib/)
-add_subdirectory(src/example_dll/)
-add_subdirectory(src/example_app/)
+add_subdirectory(src/example_lib)
+add_subdirectory(src/example_dll)
+add_subdirectory(src/example_app)
 
 option(BUILD_TESTS "Buid tests." ON)
 if (BUILD_TESTS)

@@ -2,18 +2,18 @@ CVER ?= release
 CCPU ?= x86-64
 CCOMPILER ?= gcc
 CPLATFORM ?= linux
-PREFIX ?= ${PROJECTPATH}/packaging
+PREFIX ?= ${PROJECTPATH}/packaging/
 
-APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
-DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
-LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}
+APPOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}/
+DLLOUTPATH := ${PROJECTPATH}/bin/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}/
+LIBOUTPATH := ${PROJECTPATH}/lib/${CPLATFORM}_${CCPU}_${CCOMPILER}/${CVER}/
 $(shell mkdir -p ${APPOUTPATH})
 $(shell mkdir -p ${DLLOUTPATH})
 $(shell mkdir -p ${LIBOUTPATH})
 
-INCLUDES := -I${PROJECTPATH}/include/example_app \
-            -I${PROJECTPATH}/include/example_dll \
-            -I${PROJECTPATH}/include/example_lib
+INCLUDES := -I${PROJECTPATH}/include/example_app/ \
+            -I${PROJECTPATH}/include/example_dll/ \
+            -I${PROJECTPATH}/include/example_lib/
 
 FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
 
@@ -24,16 +24,16 @@ all: subdirs
 
 .PHONY: install
 install:
-	@(mkdir -p ${PREFIX}/bin)
-	@(mkdir -p ${PREFIX}/lib)
-	@(mkdir -p ${PREFIX}/include)
-	cp -rf ${APPOUTPATH}/* ${PREFIX}/bin
-	cp -rf ${DLLOUTPATH}/* ${PREFIX}/lib
-	cp -rf ${LIBOUTPATH}/* ${PREFIX}/lib
-	cp -rf ${PROJECTPATH}/include/* ${PREFIX}/include
-	chmod 755 -R ${PREFIX}/bin
-	chmod 755 -R ${PREFIX}/lib
-	chmod 755 -R ${PREFIX}/include
+	@(mkdir -p ${PREFIX}/bin/)
+	@(mkdir -p ${PREFIX}/lib/)
+	@(mkdir -p ${PREFIX}/include/)
+	cp -rf ${APPOUTPATH}/* ${PREFIX}/bin/
+	cp -rf ${DLLOUTPATH}/* ${PREFIX}/lib/
+	cp -rf ${LIBOUTPATH}/* ${PREFIX}/lib/
+	cp -rf ${PROJECTPATH}/include/* ${PREFIX}/include/
+	chmod 755 -R ${PREFIX}/bin/
+	chmod 755 -R ${PREFIX}/lib/
+	chmod 755 -R ${PREFIX}/include/
 
 .PHONY: test
 test:
