@@ -18,7 +18,7 @@ DLLSUFFIX = .so
 
 ifeq ($(CVER), debug)
     OUTSUFFIX := ${CPLATFORM}_${CCPU}_${CCOMPILER}_d
-    LDFLAGS += -Wl,-rpath=${APPOUTPATH}:${LIBOUTPATH}:${DLLOUTPATH}
+    LDFLAGS += -Wl,-rpath,${APPOUTPATH}:${LIBOUTPATH}:${DLLOUTPATH}
     CFLAGS += -g -D__DEBUG
     CXXFLAGS += -g -D__DEBUG
 
@@ -28,7 +28,7 @@ ifeq ($(CVER), debug)
 
 else
     OUTSUFFIX := ${CPLATFORM}_${CCPU}_${CCOMPILER}
-    LDFLAGS += -Wl,-rpath=./:./lib/:./plugin/
+    LDFLAGS += -Wl,-rpath,./:./lib/:./plugin/
     CFLAGS += -O3 -Wall -rdynamic -ldl
     CXXFLAGS += -O3 -Wall -rdynamic -ldl
 
