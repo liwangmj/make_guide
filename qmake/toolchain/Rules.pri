@@ -28,13 +28,23 @@ macx-g++ {
     CPLATFORM = macx
     CCOMPILE = gcc
 }
-macx-llvm {
+macx-clang {
     CPLATFORM = macx
     CCOMPILE = clang
 }
 linux-g++ {
     CPLATFORM = linux
     CCOMPILE = gcc
+}
+android-g++ {
+    CPLATFORM = android
+    CCOMPILE = gcc
+    CCPU = armeabi-v7a
+}
+macx-ios-clang {
+    CPLATFORM = ios
+    CCOMPILE = clang
+    CCPU = armeabi-v7a
 }
 
 APPOUTPATH = $${PROJECTPATH}/bin/$${CPLATFORM}_$${CCPU}_$${CCOMPILE}/$${CVER}/

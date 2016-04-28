@@ -6,6 +6,11 @@ add_definitions(-D__DLL_LIBRARY)
 aux_source_directory(. SRC_LIST)
 
 add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
+
+if (CPLATFORM MATCHES "ios")
+    set_xcode_property (${PROJECT_NAME} GCC_GENERATE_DEBUGGING_SYMBOLS YES)
+endif ()
+
 if (CPLATFORM MATCHES "win32")
 else ()
 #    target_link_libraries(${PROJECT_NAME} ${${PROJECT_NAME}_EXTRA_LDFLAGS}
