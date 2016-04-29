@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PROJECT_NAME="cmake"
-ANDROID_NDK="${PWD}/../../cmake/toolchain/android-ndk-r8/"
+ANDROID_NDK="${PWD}/../../${PROJECT_NAME}/toolchain/android-ndk-r8/"
 
 CPLATFORM="android-9"
 CCPU="armeabi-v7a"

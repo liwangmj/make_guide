@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
-mkdir -p ${PWD}/../../build/cmake_linux_x86-64_gcc_release/
-cd ${PWD}/../../build/cmake_linux_x86-64_gcc_release/
+PROJECT_NAME="cmake"
+
+CPLATFORM="linux"
+CCPU="x86-64"
+CCOMPILE="gcc"
+CVER="release"
+
+mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
-cmake -DCPLATFORM=linux -DCCPU=x86-64 -DCCOMPILE=gcc -DCVER=release -DCMAKE_BUILD_TYPE=Release ../../cmake 
+cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=${CVER} ../../${PROJECT_NAME}
 make -j8
 
 exit 0

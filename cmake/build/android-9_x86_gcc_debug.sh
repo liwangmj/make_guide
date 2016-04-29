@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 
-mkdir -p ${PWD}/../../build/cmake_android-9_x86_gcc_debug/
-cd ${PWD}/../../build/cmake_android-9_x86_gcc_debug/
+PROJECT_NAME="cmake"
+ANDROID_NDK="${PWD}/../../${PROJECT_NAME}/toolchain/android-ndk-r8/"
+
+CPLATFORM="android-9"
+CCPU="x86"
+CCOMPILE="gcc"
+CVER="debug"
+
+mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
-ANDROID_NDK=${PWD}/../../cmake/toolchain/android-ndk-r8/
-
-${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --platform=android-9 --toolchain=x86-4.4.3 --system=linux-x86 --ndk-dir=${ANDROID_NDK} --install-dir=${PWD}
-#${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --platform=android-9 --toolchain=x86-4.4.3 --system=darwin-x86_64 --ndk-dir=${ANDROID_NDK} --install-dir=${PWD}
+${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --toolchain=x86-4.4.3 --system=linux-x86 --platform=${CPLATFORM} --ndk-dir=${ANDROID_NDK} --install-dir=${PWD}
+#${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --toolchain=x86-4.4.3 --system=darwin-x86_64 --platform=${CPLATFORM} --ndk-dir=${ANDROID_NDK} --install-dir=${PWD}
 
 export PATH=${PWD}/bin/:$PATH
 export PATH=${ANDROID_NDK}/build/tools/:$PATH
 export ANDROID_STANDALONE_TOOLCHAIN=${PWD}
 
-cmake -DCPLATFORM=android-9 -DCCPU=x86 -DCCOMPILE=gcc -DCVER=debug -DANDROID_NATIVE_API_LEVEL="android-9" -DANDROID_ABI="x86" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../../cmake/toolchain/android.toolchain.cmake ../../cmake
+cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -DANDROID_ABI="${CCPU}" -DANDROID_NATIVE_API_LEVEL=${CPLATFORM} -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_TOOLCHAIN_FILE=../../${PROJECT_NAME}/toolchain/android.toolchain.cmake ../../${PROJECT_NAME}
 #make -j8
 cmake --build .
 

@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
-mkdir -p ${PWD}/../../build/cmake_macx_x86-64_clang_release/
-cd ${PWD}/../../build/cmake_macx_x86-64_clang_release/
+PROJECT_NAME="cmake"
+
+CPLATFORM="macx"
+CCPU="x86-64"
+CCOMPILE="clang"
+CVER="release"
+
+mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
-cmake -DCPLATFORM=macx -DCCPU=x86-64 -DCCOMPILE=clang -DCVER=release -G"Xcode" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CONFIGURATION_TYPES=release ../../cmake 
-xcodebuild -configuration "Release"
+cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -G"Xcode" -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_CONFIGURATION_TYPES=${CVER} ../../${PROJECT_NAME} 
+xcodebuild -configuration ${CVER}
 #cmake --build .
 
 exit 0
