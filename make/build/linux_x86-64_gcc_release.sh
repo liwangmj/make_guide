@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+cd $(dirname $0)
 cd ${PWD}/../
 
 make PLATFORM=linux CCPU=x86-64 CCCOMPILER=gcc CVER=debug clean

@@ -9,7 +9,7 @@ add_subdirectory(src/example_lib)
 add_subdirectory(src/example_dll)
 add_subdirectory(src/example_app)
 
-option(BUILD_TESTS "Buid tests." ON)
+option(BUILD_TESTS "Buid tests." OFF)
 if (BUILD_TESTS)
     add_subdirectory(testing)
 endif ()
