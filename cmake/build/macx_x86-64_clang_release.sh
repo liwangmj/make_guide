@@ -12,7 +12,7 @@ cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
 cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -G"Xcode" -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_CONFIGURATION_TYPES=${CVER} ${PWD}/../../${PROJECT_NAME} 
-xcodebuild -configuration ${CVER}
+xcodebuild -project ${PROJECT_NAME}.xcodeproj -configuration ${CVER}
 #cmake --build .
 
 exit 0

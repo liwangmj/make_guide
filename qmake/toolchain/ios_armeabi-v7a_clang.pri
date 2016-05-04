@@ -1,11 +1,13 @@
+QMAKE_LFLAGS_SONAME = -Wl,-install_name,@rpath/
+
 QMAKE_CFLAGS += -fPIC
 QMAKE_CXXFLAGS += -fPIC
 QMAKE_CFLAGS_DEBUG += -g
 QMAKE_CXXFLAGS_DEBUG += -g
-QMAKE_LFLAGS_DEBUG += -Wl,-rpath,$${APPOUTPATH}:$${LIBOUTPATH}:$${DLLOUTPATH}
+QMAKE_LFLAGS_DEBUG += -Wl,-rpath,@loader_path,-rpath,@executable_path,-rpath,$${APPOUTPATH},-rpath,$${DLLOUTPATH},-rpath,$${LIBOUTPATH}
 QMAKE_CFLAGS_RELEASE += -O2 -Wall
 QMAKE_CXXFLAGS_RELEASE += -O2 -Wall
-QMAKE_LFLAGS_RELEASE += -Wl,-rpath,./:./lib/:./plugin/
+QMAKE_LFLAGS_RELEASE += -Wl,-rpath,@loader_path,-rpath,@executable_path,-rpath,@executable_path/../../../
 
 LIBSUFFIX = .a
 DLLSUFFIX = .dylib
