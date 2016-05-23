@@ -8,7 +8,7 @@ QMAKE_CXXFLAGS_RELEASE += -O2 -Wall -rdynamic -ldl
 QMAKE_LFLAGS_RELEASE += -Wl,-rpath,./:./lib/:./plugin/
 
 LIBSUFFIX = .a
-DLLSUFFIX = .dylib
+DLLSUFFIX = .so
 
 DEFINES += __ANDROID
 
