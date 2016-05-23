@@ -20,10 +20,16 @@ CONFIG(debug, debug|release) {
     LIBSLIST += -L$${DLLOUTPATH} \
                 -lexample_dll_$${OUTSUFFIX}
 
+    ANDROID_EXTRA_LIBS = \
+        $${DLLOUTPATH}/libexample_dll_$${OUTSUFFIX}$${DLLSUFFIX}
+
 } else {
     OUTSUFFIX = $${CPLATFORM}_$${CCPU}_$${CCOMPILE}
 
     LIBSLIST += $${LIBOUTPATH}/libexample_lib_$${OUTSUFFIX}$${LIBSUFFIX}
     LIBSLIST += -L$${DLLOUTPATH} \
                 -lexample_dll_$${OUTSUFFIX}
+
+    ANDROID_EXTRA_LIBS = \
+        $${DLLOUTPATH}/libexample_dll_$${OUTSUFFIX}$${DLLSUFFIX}
 }
