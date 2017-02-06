@@ -1,4 +1,4 @@
-export LD_LIBRARY_PATH=${APPOUTPATH}
+export LD_LIBRARY_PATH=${APPOUTPATH}:.:/usr/local/lib:/usr/local/lib64
 
 CCACHE := ccache
 OBJCOPY := objcopy

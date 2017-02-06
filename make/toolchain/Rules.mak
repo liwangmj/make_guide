@@ -20,6 +20,7 @@ FINDSUB := $$(find ./${SUBDIRS} -name '*.o')
 export MAKEINCLUDE_PLATFORM=${PROJECTPATH}/toolchain/${CPLATFORM}_${CCPU}_${CCOMPILER}.mak
 include ${MAKEINCLUDE_PLATFORM}
 
+.PHONY: all
 all: subdirs
 
 .PHONY: install
