@@ -57,7 +57,7 @@ help:
 	@echo "  CCPU           ""=x86或=x86-64或其他"
 	@echo "  CPLATFORM      ""=linux或其他平台"
 	@echo "  CCOMPILER      ""=gcc或其他平台"
-	@echo "  PREFIX       ""=/usr/local或者自定义目录"
+	@echo "  PREFIX         ""=/usr/local或者自定义目录"
 	@echo "Example:"
 	@echo "  make CPLATFORM=linux CCPU=x86-64 CCOMPILER=gcc CVER=debug all"
 	@echo "  make PREFIX=/usr/local install"
