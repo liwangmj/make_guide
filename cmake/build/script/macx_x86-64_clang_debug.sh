@@ -7,8 +7,8 @@ CCOMPILE="clang"
 CVER="debug"
 
 cd $(dirname $0)
-mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
-cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+mkdir -p ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
 cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -DBUILD_TESTS=ON -G"Xcode" -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_CONFIGURATION_TYPES=${CVER} ${PWD}/../../${PROJECT_NAME} 

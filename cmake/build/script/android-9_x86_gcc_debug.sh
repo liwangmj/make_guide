@@ -7,8 +7,8 @@ CCOMPILE="gcc"
 CVER="debug"
 
 cd $(dirname $0)
-mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
-cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+mkdir -p ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
 ANDROID_NDK="${PWD}/../../${PROJECT_NAME}/toolchain/android-ndk-r8/"

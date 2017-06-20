@@ -4,11 +4,11 @@ PROJECT_NAME="cmake"
 CPLATFORM="android-9"
 CCPU="armeabi-v7a"
 CCOMPILE="gcc"
-CVER="release"
+CVER="debug"
 
 cd $(dirname $0)
-mkdir -p ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
-cd ${PWD}/../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+mkdir -p ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
+cd ${PWD}/../../../build/${PROJECT_NAME}_${CPLATFORM}_${CCPU}_${CCOMPILE}_${CVER}/
 rm -rf *
 
 ANDROID_NDK="${PWD}/../../${PROJECT_NAME}/toolchain/android-ndk-r8/"
@@ -20,7 +20,7 @@ export PATH=${PWD}/bin/:$PATH
 export PATH=${ANDROID_NDK}/build/tools/:$PATH
 export ANDROID_STANDALONE_TOOLCHAIN=${PWD}
 
-cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -DANDROID_ABI="${CCPU} with NEON" -DANDROID_NATIVE_API_LEVEL=${CPLATFORM} -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_TOOLCHAIN_FILE=${PWD}/../../${PROJECT_NAME}/toolchain/android.toolchain.cmake ${PWD}/../../${PROJECT_NAME}
+cmake -DCPLATFORM=${CPLATFORM} -DCCPU=${CCPU} -DCCOMPILE=${CCOMPILE} -DCVER=${CVER} -DBUILD_TESTS=ON -DANDROID_ABI="${CCPU} with NEON" -DANDROID_NATIVE_API_LEVEL=${CPLATFORM} -DCMAKE_BUILD_TYPE=${CVER} -DCMAKE_TOOLCHAIN_FILE=${PWD}/../../${PROJECT_NAME}/toolchain/android.toolchain.cmake ${PWD}/../../${PROJECT_NAME}
 make -j8
 #cmake --build .
 
