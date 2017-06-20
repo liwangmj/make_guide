@@ -4,6 +4,6 @@
 
 int example_lib_test()
 {
-	printf("example_lib_test\n");
-	return 0;	
+    printf("example_lib_test\n");
+    return 0;	
 }

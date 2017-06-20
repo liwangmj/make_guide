@@ -4,6 +4,6 @@
 
 int module_b_test()
 {
-	printf("module_b_test\n");
-	return 0;	
+    printf("module_b_test\n");
+    return 0;
 }

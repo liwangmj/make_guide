@@ -1,4 +1,4 @@
-include ($${PWD}/../toolchain/Rules.pri)
+include ($${PWD}/../../toolchain/Rules.pri)
 
 INCLUDEPATH += $${INLCUDELIST}
 LIBS += $${LIBSLIST}

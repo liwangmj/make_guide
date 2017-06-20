@@ -11,5 +11,5 @@ add_subdirectory(src/example_app)
 
 option(BUILD_TESTS "Buid tests." OFF)
 if (BUILD_TESTS)
-    add_subdirectory(testing)
+    add_subdirectory(src/test)
 endif ()

@@ -16,5 +16,5 @@ int main(int argc, char **argv)
     example_dll_test();
     printf("runtest release finished\n");
 #endif
-	return 0;	
+    return 0;
 }

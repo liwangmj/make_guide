@@ -24,5 +24,5 @@ int main(int argc, char **argv)
     module_b_test();
     printf("main release finished\n");
 #endif
-	return 0;	
+    return 0;
 }

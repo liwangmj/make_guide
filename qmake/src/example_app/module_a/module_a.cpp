@@ -5,5 +5,5 @@
 int module_a_test()
 {
     printf("module_a_test\n");
-	return 0;
+    return 0;
 }
